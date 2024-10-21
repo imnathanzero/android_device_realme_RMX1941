@@ -114,7 +114,7 @@ Return<void> Stream::getSupportedSampleRates(AudioFormat format,
     SampleRateSet halSampleRates;
     if (result == Result::OK) {
         halSampleRates =
-            samplingRatesFromString(halListValue.string(), AudioParameter::valueListSeparator);
+            samplingRatesFromString(halListValue.c_str(), AudioParameter::valueListSeparator);
         sampleRates = hidl_vec<uint32_t>(halSampleRates.begin(), halSampleRates.end());
         // Legacy get_parameter does not return a status_t, thus can not advertise of failure.
         // Note that this method must succeed (non empty list) if the format is supported.
@@ -140,7 +140,7 @@ Return<void> Stream::getSupportedChannelMasks(AudioFormat format,
     ChannelMaskSet halChannelMasks;
     if (result == Result::OK) {
         halChannelMasks =
-            channelMasksFromString(halListValue.string(), AudioParameter::valueListSeparator);
+            channelMasksFromString(halListValue.c_str(), AudioParameter::valueListSeparator);
         channelMasks.resize(halChannelMasks.size());
         size_t i = 0;
         for (auto channelMask : halChannelMasks) {
@@ -182,7 +182,7 @@ Return<void> Stream::getSupportedFormats(getSupportedFormats_cb _hidl_cb) {
     hidl_vec<AudioFormat> formats;
     FormatVector halFormats;
     if (result == Result::OK) {
-        halFormats = formatsFromString(halListValue.string(), AudioParameter::valueListSeparator);
+        halFormats = formatsFromString(halListValue.c_str(), AudioParameter::valueListSeparator);
         formats.resize(halFormats.size());
         for (size_t i = 0; i < halFormats.size(); ++i) {
             formats[i] = AudioFormat(halFormats[i]);
