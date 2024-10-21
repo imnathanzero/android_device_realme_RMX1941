@@ -57,3 +57,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-oppo
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)
+    ro.vendor.build.security_patch=$(VENDOR_SECURITY_PATCH)
