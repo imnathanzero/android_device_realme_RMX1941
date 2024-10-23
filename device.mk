@@ -271,14 +271,6 @@ PRODUCT_PACKAGES += \
     fstab.mt6765.ramdisk \
     ueventd.mt6765.rc
 
-# Realme
-PRODUCT_PACKAGES += \
-    RealmeParts
-
-PRODUCT_PACKAGES += \
-    parts.rc \
-    perf_profile.sh
-
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
