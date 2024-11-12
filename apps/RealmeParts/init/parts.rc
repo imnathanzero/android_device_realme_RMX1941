@@ -1,6 +1,7 @@
 on boot
     # OTG
     chown system system /sys/class/power_supply/usb/otg_switch
+    chmod 0644 /sys/class/power_supply/usb/otg_switch
 
     # CABC
     chown system system /sys/kernel/oppo_display/cabc

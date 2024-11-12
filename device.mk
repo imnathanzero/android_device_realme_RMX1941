@@ -15,15 +15,23 @@
 #
 
 DEVICE_PATH := device/realme/RMX1941
+ALLOW_MISSING_DEPENDENCIES := true
+
+# Call proprietary blob setup
+$(call inherit-product, vendor/realme/RMX1941/RMX1941-vendor.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# IMS
-$(call inherit-product, vendor/realme/RMX1941-ims/RMX1941-ims.mk)
+# Mediatek IMS
+$(call inherit-product, vendor/mtk-ims/ims.mk)
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 28
+
+# Inherit several Android Go Configurations (Beneficial for everyone, even on non-Go devices)
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
 
 # APNs
 PRODUCT_COPY_FILES += \
@@ -43,12 +51,7 @@ PRODUCT_PACKAGES += \
     libtinycompress
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \
-    $(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-    $(DEVICE_PATH)/configs/audio/audio_em.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_em.xml \
-    $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    $(DEVICE_PATH)/configs/audio/audio_policy_configuration_bluetooth_legacy_hal.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_bluetooth_legacy_hal.xml \
-    $(DEVICE_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
@@ -122,16 +125,16 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.gatekeeper@1.0.vendor
 
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@2.0 \
+    android.hardware.gnss@2.0.vendor
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
-
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.0 \
-    android.hardware.gnss@2.0.vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -142,9 +145,6 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
-# Inherit several Android Go Configurations (Beneficial for everyone, even on non-Go devices)
-PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
 
 # Input/DT2W
 PRODUCT_COPY_FILES += \
@@ -183,6 +183,10 @@ PRODUCT_PACKAGES += \
 # Neutral Networks
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.2.vendor
+    
+# Nuke Apps
+PRODUCT_PACKAGES += \
+    nuke-apps
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -227,9 +231,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# Lineage Charger
-WITH_LINEAGE_CHARGER := true
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.3.vendor
@@ -272,6 +273,7 @@ PRODUCT_PACKAGES += \
 
 # Realme
 PRODUCT_PACKAGES += \
+    RealmeDirac \
     RealmeParts
 
 PRODUCT_PACKAGES += \
@@ -281,6 +283,10 @@ PRODUCT_PACKAGES += \
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
+
+# Mobile data
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.android.mobiledata=false
 
 # Seccomp
 PRODUCT_COPY_FILES += \
@@ -294,7 +300,9 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/mediatek \
+    $(DEVICE_PATH)
 
 # Symbols
 PRODUCT_PACKAGES += \
@@ -347,6 +355,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
-
-# Inherit Device Vendor
-$(call inherit-product, vendor/realme/RMX1941/RMX1941-vendor.mk)

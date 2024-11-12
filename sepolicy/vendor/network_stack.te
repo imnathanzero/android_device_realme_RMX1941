@@ -1,0 +1,2 @@
+allow network_stack fs_bpf:file read ;
+allow network_stack proc_net:file { getattr read };

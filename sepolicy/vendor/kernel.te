@@ -1,0 +1,2 @@
+allow kernel kernel:capability dac_override ;
+allow kernel kernel:system syslog_read ;

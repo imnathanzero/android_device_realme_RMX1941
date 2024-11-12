@@ -42,14 +42,25 @@
          Spline interpolation is used to determine the auto-brightness
          backlight values for lux levels between these control points.
          Must be overridden in platform specific overlays -->
-     <integer-array name="config_autoBrightnessLevels">
-      <item>45</item>
-      <item>1025</item>
-      <item>1480</item>
-      <item>2250</item>
-      <item>3300</item>
-      <item>10000</item>
-     </integer-array>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>128</item>
+        <item>256</item>
+        <item>384</item>
+        <item>512</item>
+        <item>640</item>
+        <item>768</item>
+        <item>896</item>
+        <item>1024</item>
+        <item>2048</item>
+        <item>4096</item>
+        <item>6144</item>
+        <item>8192</item>
+        <item>10240</item>
+        <item>12288</item>
+        <item>14336</item>
+        <item>16384</item>
+        <item>18432</item>
+    </integer-array>
 
     <!-- Array of desired screen brightness in nits corresponding to the lux values
          in the config_autoBrightnessLevels array. The display brightness is defined as the measured
@@ -129,6 +140,12 @@
 
     <!-- Whether camera shutter sound is forced or not  (country specific). -->
      <bool name="config_camera_sound_forced">false</bool>
+
+    <!-- Whether device has screen with higher aspect ratio -->
+     <bool name="config_haveHigherAspectRatioScreen">true</bool>
+    
+    <!-- Disable bluetooth by default -->
+     <bool name="def_bluetooth_on">false</bool>
 
     <!-- Flag specifying whether VoLTE should be available for carrier: independent of
          carrier provisioning. If false: hard disabled. If true: then depends on carrier

@@ -1,0 +1,1 @@
+allow proc_tp proc:filesystem associate ;

@@ -1,0 +1,2 @@
+allow ccci_rpcd ctl_ccci_rpcd_prop:file { getattr open };
+get_prop(ccci_rpcd, default_prop)

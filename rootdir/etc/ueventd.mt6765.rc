@@ -1,26 +1,26 @@
-#change partition permission
+# Change partition permission
 /dev/block/mmcblk0                                              0660    root    system
 /dev/block/mmcblk0boot0                                         0660    root    system
 /dev/block/mmcblk0boot1                                         0660    root    system
 /dev/misc-sd                                                    0660    root    system
-/dev/block/platform/bootdevice/by-name/misc2     0660    root    system
-/dev/block/platform/bootdevice/by-name/boot      0640    root    system
-/dev/block/platform/bootdevice/by-name/recovery  0640    root    system
-/dev/block/platform/bootdevice/by-name/secro     0640    root    system
-/dev/block/platform/bootdevice/by-name/seccfg    0660    root    system
-/dev/block/platform/bootdevice/by-name/proinfo   0660    root    system
-/dev/block/platform/bootdevice/by-name/nvram     0660    root    system
-/dev/block/platform/bootdevice/by-name/para      0660    root    system
-/dev/block/platform/bootdevice/by-name/logo      0660    root    system
-/dev/block/platform/bootdevice/by-name/frp       0660    root    system
-/dev/block/platform/bootdevice/by-name/md1img    0640    root    system
-/dev/block/platform/bootdevice/by-name/md1img_a  0640    root    system
-/dev/block/platform/bootdevice/by-name/md1img_b  0640    root    system
-/dev/block/platform/bootdevice/by-name/md1dsp    0660    root    system
+/dev/block/platform/bootdevice/by-name/misc2                    0660    root    system
+/dev/block/platform/bootdevice/by-name/boot                     0640    root    system
+/dev/block/platform/bootdevice/by-name/recovery                 0640    root    system
+/dev/block/platform/bootdevice/by-name/secro                    0640    root    system
+/dev/block/platform/bootdevice/by-name/seccfg                   0660    root    system
+/dev/block/platform/bootdevice/by-name/proinfo                  0660    root    system
+/dev/block/platform/bootdevice/by-name/nvram                    0660    root    system
+/dev/block/platform/bootdevice/by-name/para                     0660    root    system
+/dev/block/platform/bootdevice/by-name/logo                     0660    root    system
+/dev/block/platform/bootdevice/by-name/frp                      0660    root    system
+/dev/block/platform/bootdevice/by-name/md1img                   0640    root    system
+/dev/block/platform/bootdevice/by-name/md1img_a                 0640    root    system
+/dev/block/platform/bootdevice/by-name/md1img_b                 0640    root    system
+/dev/block/platform/bootdevice/by-name/md1dsp                   0660    root    system
 
 
 # OTP
-/dev/otp                  0660   system     system
+/dev/otp                                         0660   system     system
 /dev/block/platform/bootdevice/by-name/otp       0660    root    system
 
 # Connectivity
@@ -96,22 +96,22 @@
 
 /sys/devices/platform/leds-mt65xx/leds/green   delay_on      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/green   delay_off      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/red   delay_on      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/red   delay_off      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/blue   delay_on      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/blue   delay_off      0664  system   system
+/sys/devices/platform/leds-mt65xx/leds/red     delay_on      0664  system   system
+/sys/devices/platform/leds-mt65xx/leds/red     delay_off      0664  system   system
+/sys/devices/platform/leds-mt65xx/leds/blue    delay_on      0664  system   system
+/sys/devices/platform/leds-mt65xx/leds/blue    delay_off      0664  system   system
 /sys/class/leds/green   delay_on      0664  system   system
 /sys/class/leds/green   delay_off      0664  system   system
-/sys/class/leds/red   delay_on      0664  system   system
-/sys/class/leds/red   delay_off      0664  system   system
-/sys/class/leds/blue   delay_on      0664  system   system
-/sys/class/leds/blue   delay_off      0664  system   system
+/sys/class/leds/red     delay_on      0664  system   system
+/sys/class/leds/red     delay_off      0664  system   system
+/sys/class/leds/blue    delay_on      0664  system   system
+/sys/class/leds/blue    delay_off      0664  system   system
 
-#GPIO
+# GPIO
 /dev/mtgpio               0600   radio      root
 
 
-#FOR VIA MODEM
+# For Via Modem
 /dev/ttySDIO*             0660   radio      sdcard_rw
 /dev/ttyRB*               0660   radio      radio
 
@@ -121,15 +121,15 @@
 # Change ION driver permission
 /dev/ion                  0664   system     graphics
 
-#touch
+# Touch
 /dev/touch                0660   root       system
 /dev/hotknot              0660   root       system
 
-#hang_detect
+# hang_detect
 /dev/RT_Monitor           0600   system     system
 /dev/kick_powerkey        0600   system     system
 
-#MTK In-House TEE
+# MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
 
 # TrustKernel add

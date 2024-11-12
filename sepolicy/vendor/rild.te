@@ -5,3 +5,6 @@ set_prop(rild, oppo_network_prop)
 get_prop(rild, imsi_prop)
 set_prop(rild, imsi_prop)
 get_prop(rild, mtk_md_version_prop)
+allow rild ctl_rildaemon_prop:file { getattr open };
+allow rild ctl_viarild_prop:file { getattr open };
+get_prop(rild, default_prop)

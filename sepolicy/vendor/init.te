@@ -4,5 +4,31 @@ allow init proc_tp:file rw_file_perms;
 
 # Allow init to create socket_device(s)
 allow init socket_device:sock_file create_file_perms;
-
 allow init sysfs_sensor:file setattr;
+
+binder_call(init, hwservicemanager)
+
+allow init dnsmasq_exec:file getattr ;
+allow init ppp_exec:file getattr ;
+allow init proc:file { execute setattr };
+allow init proc_cpufreq:file setattr ;
+allow init rs_exec:file getattr ;
+allow init runas_exec:file getattr ;
+allow init same_process_hal_file:file execute ;
+allow init sdcardd_exec:file getattr ;
+allow init service_nvram_init_prop:file { getattr open };
+allow init sgdisk_exec:file getattr ;
+allow init shell_exec:file execute_no_trans ;
+allow init simpleperf_app_runner_exec:file getattr ;
+allow init sysfs:file { read setattr };
+allow init sysfs_ged:file setattr ;
+allow init tcpdump_exec:file getattr ;
+allow init unlabeled:file setattr ;
+allow init vendor_file:file execute_no_trans ;
+allow init vold_prepare_subdirs_exec:file getattr ;
+allow init proc:filesystem associate ;
+allow init sysfs_class:lnk_file read ;
+
+set_prop(init, overlay_prop)
+allow init default_android_hwservice:hwservice_manager { add find };
+allow init hidl_base_hwservice:hwservice_manager add ;

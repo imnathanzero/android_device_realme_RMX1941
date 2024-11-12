@@ -1,0 +1,9 @@
+allow netd system_file:dir add_name ;
+allow netd device_config_netd_native_prop:file { getattr open };
+allow netd netdagent_prop:file { getattr open };
+
+# Allow netd to add names in directories of type system_file
+allow netd system_file:dir { add_name create };
+
+# Allow netd to perform valid operations on system_file files
+allow netd system_file:file { append create getattr ioctl open read write };

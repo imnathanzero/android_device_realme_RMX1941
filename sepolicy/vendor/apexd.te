@@ -1,0 +1,4 @@
+allow apexd apexd_config_prop:file { getattr open };
+allow apexd apexd_prop:file { getattr open };
+allow apexd ctl_apexd_prop:file { getattr open };
+allow apexd sysfs_class:lnk_file read ;

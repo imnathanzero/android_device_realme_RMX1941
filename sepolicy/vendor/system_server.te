@@ -1,0 +1,2 @@
+allow system_server proc_last_kmsg:file { getattr read };
+allow system_server vendor_default_prop:file { getattr open };
