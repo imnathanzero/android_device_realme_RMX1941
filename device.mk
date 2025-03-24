@@ -121,7 +121,8 @@ PRODUCT_PACKAGES += \
 
 # FM Radio
 PRODUCT_PACKAGES += \
-    RevampedFMRadio
+    RevampedFMRadio \
+    libmtkfmjni
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
