@@ -298,6 +298,10 @@ vendor/firmware/soc1_0_ram_bt_1_1_hdr.bin
 vendor/firmware/soc1_0_ram_mcu_1_1_hdr.bin
 vendor/firmware/soc1_0_ram_wifi_1_1_hdr.bin
 
+# FM Radio
+-product/lib/libfmjni.so
+-product/lib64/libfmjni.so
+
 # GPS
 vendor/bin/hw/android.hardware.gnss@2.0-service-mediatek
 vendor/etc/init/android.hardware.gnss@2.0-service-mediatek.rc
