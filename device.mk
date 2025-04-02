@@ -73,6 +73,14 @@ PRODUCT_PACKAGES += \
     audio.sysbta.default \
     android.hardware.bluetooth.audio-service-system
 
+# BesLoudness
+PRODUCT_PACKAGES += \
+    BesLoudness
+
+# PowerOffAlarm
+PRODUCT_PACKAGES += \
+    PowerOffAlarm
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.2.vendor \
@@ -188,7 +196,7 @@ PRODUCT_PACKAGES += \
 # Neutral Networks
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.2.vendor
-    
+
 # Nuke Apps
 PRODUCT_PACKAGES += \
     nuke-apps
@@ -306,6 +314,8 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/interfaces \
+    hardware/google/pixel \
     hardware/mediatek \
     $(DEVICE_PATH)
 
